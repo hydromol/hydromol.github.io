@@ -10,7 +10,7 @@ $(document).ready(function() {
             let valueB = b[column];
 
             // Convert to numbers for numerical columns
-            if (['mol_wt', 'pubchem_cid', 'Totalentropy', 'Gibbsfreeenergy'].includes(column)) {
+            if (['mol_wt', 'RotationalconstantA', 'RotationalconstantB', 'RotationalconstantC', 'Dipolemoment', 'HOMO', 'LUMO', 'EnergyGap', 'Zeropointenergy', 'Finalsinglepointenergy', 'Totalthermalenergy', 'TotalEnthalpy', 'Totalentropy', 'Gibbsfreeenergy'].includes(column)) {
                 valueA = parseFloat(valueA);
                 valueB = parseFloat(valueB);
             }
@@ -32,6 +32,17 @@ $(document).ready(function() {
             row.append($('<td>').text(molecule.mol_wt));
             row.append($('<td>').text(molecule.pubchem_cid));
             row.append($('<td>').text(molecule.iupac_name));
+            row.append($('<td>').text(molecule.RotationalconstantA));
+            row.append($('<td>').text(molecule.RotationalconstantB));
+            row.append($('<td>').text(molecule.RotationalconstantC));
+            row.append($('<td>').text(molecule.Dipolemoment));
+            row.append($('<td>').text(molecule.HOMO));
+            row.append($('<td>').text(molecule.LUMO));
+            row.append($('<td>').text(molecule.EnergyGap));
+            row.append($('<td>').text(molecule.Zeropointenergy));
+            row.append($('<td>').text(molecule.Finalsinglepointenergy));
+            row.append($('<td>').text(molecule.Totalthermalenergy));
+            row.append($('<td>').text(molecule.TotalEnthalpy));
             row.append($('<td>').text(molecule.Totalentropy));
             row.append($('<td>').text(molecule.Gibbsfreeenergy));
             
