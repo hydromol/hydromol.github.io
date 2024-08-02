@@ -38,22 +38,31 @@
             border-bottom: 1px solid #ddd;
         }
     
-        /* New sorting-related styles */
+        /* Updated sorting-related styles */
         th[data-sortable] {
             cursor: pointer;
+            position: relative;
+            padding-right: 20px; /* Make space for the arrow */
         }
     
         th[data-sortable]::after {
             content: '\2195'; /* Unicode for up/down arrow */
-            margin-left: 5px;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em; /* Increase size of the arrow */
+            color: #666; /* Make the arrow a bit darker */
         }
     
         th.sort-asc::after {
             content: '\2191'; /* Unicode for up arrow */
+            color: #000; /* Make the active sort arrow darker */
         }
     
         th.sort-desc::after {
             content: '\2193'; /* Unicode for down arrow */
+            color: #000; /* Make the active sort arrow darker */
         }
     </style>
 </head>
@@ -78,6 +87,7 @@
                         <th data-sortable data-column="mol_wt">Molecular weight(g/mol)</th>
                         <th data-sortable data-column="pubchem_cid">Pubchem cid</th>
                         <th>IUPAC name</th>
+                        
                         <th data-sortable data-column="Totalentropy">Entropy(Eh)</th>
                         <th data-sortable data-column="Gibbsfreeenergy">Gibbs free energy(Eh)</th>
                     </tr>
