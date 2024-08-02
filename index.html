@@ -111,14 +111,14 @@
             <button type="submit">Get SMILES</button>
         </form>
         <form id="name-search-form">
-            <label>Please type the number of C and H:</label>
+            <label>Please type the number of C and H (range: 1-10):</label>
             <div>
-                <label for="c-input">C:</label>
-                <input type="number" id="c-input" name="c-input" min="0" max="20" required>
+                <label for="c-input">C (1-10):</label>
+                <input type="number" id="c-input" name="c-input" min="1" max="10" required>
             </div>
             <div>
-                <label for="h-input">H:</label>
-                <input type="number" id="h-input" name="h-input" min="0" max="20" required>
+                <label for="h-input">H (1-10):</label>
+                <input type="number" id="h-input" name="h-input" min="1" max="10" required>
             </div>
             <button type="submit">Get MolStochiometry</button>
         </form>
@@ -180,8 +180,8 @@
                         const selectedOption = searchType.value;
                         const { min, max, placeholderMin, placeholderMax } = rangeData[selectedOption];
             
-                        minValue.placeholder = `Min: ${placeholderMin}`;
-                        maxValue.placeholder = `Max: ${placeholderMax}`;
+                        minValue.placeholder = `eg: ${placeholderMin}`;
+                        maxValue.placeholder = `eg: ${placeholderMax}`;
             
                         minValue.addEventListener('focus', () => showPopup(min, max));
                         maxValue.addEventListener('focus', () => showPopup(min, max));
