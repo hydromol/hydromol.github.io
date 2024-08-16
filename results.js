@@ -32,7 +32,7 @@ $(document).ready(function() {
             row.append($('<td>').html(`<a href="chemdata.html?search-input=${encodeURIComponent(molecule.smiles_format)}">${molecule.smiles_format}</a>`));
             row.append($('<td>').text(molecule.formula));
             row.append($('<td>').text(molecule.mol_wt));
-            row.append($('<td>').text(molecule.pubchem_cid));
+            row.append($('<td>').text(molecule.PubChem_CID));
             row.append($('<td>').text(molecule.iupac_name));
             row.append($('<td>').text(molecule.RotationalconstantA));
             row.append($('<td>').text(molecule.RotationalconstantB));

@@ -7,7 +7,7 @@ $(document).ready(function() {
         'formula': 'Formula',
         'mol_wt': 'Molecular weight(g/mol)',
         // 'pubchem_status': 'Pubchem status',
-        'pubchem_cid': 'Pubchem cid',
+        'PubChem_CID': 'Pubchem cid',
         'iupac_name': 'IUPAC name',
         'RotationalconstantA': 'Rotational constant A(cm-1)',
         'RotationalconstantB': 'Rotational constant B(cm-1)',
