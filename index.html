@@ -29,7 +29,7 @@
             margin-bottom: 8px;
             font-weight: bold;
         }
-        #property-search-form select, 
+        #property-search-form select,
         #property-search-form input {
             width: calc(100% - 20px);
             padding: 10px;
@@ -76,19 +76,89 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: none;
-        
-        
+
+
         }
         #name-search-form {
             display: flex;
             align-items: center;
-            gap: 10px; /* Optional: space between elements */
+            gap: 10px; /* space between elements */
         }
 
         #name-search-form div {
             display: flex;
             align-items: center;
-            gap: 5px; /* Optional: space between label and input */
+            gap: 5px; /* space between label and input */
+        }
+       
+
+        /* Button styling */
+        .disclaimer-btn {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        /* Modal styling */
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff; /* background color of footer if needed */
+        color: black; /* Text color for footer */
+        text-align: center;
+        padding: 10px;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    }
+
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(255, 255, 255, 0.9); 
+    }
+
+    .modal-content {
+        background-color: #fefefe; 
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+
+        /* Close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .disclaimer-text {
+            font-size: 18px;
+            color: #333;
         }
     </style>
 </head>
@@ -134,7 +204,7 @@
             </div>
             <button type="submit">Get MolStochiometry</button>
         </form> -->
-        
+
                 <form id="property-search-form">
                     <label for="search-type">Search by Property:</label>
                     <select id="search-type" name="search-type">
@@ -159,7 +229,7 @@
                     <button type="submit">Search</button>
                 </form>
                 <div id="range-popup" class="range-popup"></div>
-            
+
                 <script>
                     const rangeData = {
                         Dipolemoment: { min: 1e-05, max: 14.26263, placeholderMin: 0.4, placeholderMax: 0.8 },
@@ -170,38 +240,75 @@
                         RotationalconstantB: { min: 0.009, max: 14.055, placeholderMin: 0, placeholderMax: 10 },
                         RotationalconstantC: { min: 0.009, max: 14.055, placeholderMin: 0, placeholderMax: 10 }
                     };
-            
+
                     const searchType = document.getElementById('search-type');
                     const minValue = document.getElementById('min-value');
                     const maxValue = document.getElementById('max-value');
                     const rangePopup = document.getElementById('range-popup');
-            
+
                     function updateRange() {
                         const selectedOption = searchType.value;
                         const { min, max, placeholderMin, placeholderMax } = rangeData[selectedOption];
-            
+
                         minValue.placeholder = `eg: ${placeholderMin}`;
                         maxValue.placeholder = `eg: ${placeholderMax}`;
-            
+
                         minValue.addEventListener('focus', () => showPopup(min, max));
                         maxValue.addEventListener('focus', () => showPopup(min, max));
                     }
-            
+
                     function showPopup(min, max) {
                         rangePopup.innerText = `Valid range: ${min} to ${max}`;
                         rangePopup.style.display = 'block';
                     }
-            
+
                     function hidePopup() {
                         rangePopup.style.display = 'none';
                     }
-            
+
                     searchType.addEventListener('change', updateRange);
                     minValue.addEventListener('blur', hidePopup);
                     maxValue.addEventListener('blur', hidePopup);
-            
+
                     document.addEventListener('DOMContentLoaded', updateRange);
                 </script>
+                <!-- Footer with Disclaimer button -->
+    <div class="footer">
+        <button class="disclaimer-btn" id="disclaimerBtn">Disclaimer</button>
+    </div>
+    <!-- The Modal -->
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p class="disclaimer-text">
+                The IUPAC names were generated with STOUT (<a href="https://github.com/Kohulan/Smiles-TO-iUpac-Translator.git">https://github.com/Kohulan/Smiles-TO-iUpac-Translator.git</a>)
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Get modal elements
+        var modal = document.getElementById("disclaimerModal");
+        var btn = document.getElementById("disclaimerBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
                 <div class="row">
                     <div class="col-md-12">
@@ -214,4 +321,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
