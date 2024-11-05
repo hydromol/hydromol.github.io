@@ -40,7 +40,7 @@
 <body>
     <div class="container">
         <div class="table-container">
-            <h1 id="molecule-title">Chemical properties of [Molecule]</h1>
+            <h1 id="molecule-title">Chemical properties</h1>
             <table id="molecule-table">
                 <tbody></tbody>
             </table>
@@ -69,19 +69,5 @@ function goBack() {
             <div id="jmolApplet0_infodiv"></div>
         </div>
     </div>
-    <script src="chemdata.js"></script>
-    <script>
-        // Function to retrieve the 'smiles' query parameter from the URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-    
-        // Retrieve the SMILES input from the URL or default to 'Unknown Molecule' if missing
-        const moleculeName = getQueryParam('smiles') || 'Unknown Molecule';
-    
-        // Update the heading with the molecule's name
-        document.getElementById('molecule-title').innerText = `Chemical properties of ${moleculeName}`;
-    </script>
 </body>
 </html>
