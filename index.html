@@ -174,14 +174,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-        <h1>Chemical Space</h1>
+        <div style="text-align: center; padding-bottom: 50px;"><h1>HydroMol</h1>Chemical space Explorer for Hydrocabons</div>
+        <h2>Search using SMILES</h2>
         <form id="search-form">
-            <label for="search-input">Please type a SMILES 😃:</label>
+            <label for="search-input">Enter a SMILES string:</label>
             <input type="text" id="search-input" name="search-input">
-            <button type="submit">Search Molecules</button>
+            <button type="submit">Search Molecule</button>
         </form>
+        <h2>Search using Stoichiometry</h2>
         <form id="name-search-form">
-            <label>Please type the number of C and H (range: 1-10):</label>
+            <label>Enter the number of C and H atoms:</label>
             <div>
                 <label for="c-input">C (1-10):</label>
                 <input type="number" id="c-input" name="c-input" min="1" max="10" required>
@@ -204,9 +206,9 @@
             </div>
             <button type="submit">Get MolStochiometry</button>
         </form> -->
-
+        <h2>Search by Property</h2>
                 <form id="property-search-form">
-                    <label for="search-type">Search by Property:</label>
+                    <label for="search-type">Select Property:</label>
                     <select id="search-type" name="search-type">
                         <option value="Dipolemoment">Dipole moment (Debye)</option>
                         <option value="HOMO">HOMO (eV)</option>
@@ -309,7 +311,8 @@
             }
         }
     </script>
-
+    <h2>Find the SMILES string</h2>
+    Draw the molecule, copy the SMILES, and paste in the above form.
                 <div class="row">
                     <div class="col-md-12">
                         <iframe src="https://pubchem.ncbi.nlm.nih.gov/edit3/index.html" frameborder="0"></iframe>
